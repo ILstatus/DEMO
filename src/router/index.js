@@ -1,28 +1,54 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
 
 Vue.use(VueRouter)
 
+const Login = () => import('../views/Login.vue')
+const Home = () => import('../views/Home')
+const List = () => import('../views/List')
+const User = () => import('../views/User')
+const Add = () => import('../views/Add')
+
 const routes = [
+  // {
+  //   path: '/',
+  //   redirect:'/'
+  // },
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    name: 'login',
+    component: Login
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
+    path: '/home',
+    name: 'home',
+    component: Home,
+    children: [
+      {
+        path: 'list',
+        name: 'list',
+        component: List,
+      },
+      {
+        path: 'user',
+        name: 'user',
+        component: User
+      },
+    ]
+  },
+  {
+    path: '/add',
+    name: 'add',
+    component: Add
+  },
+
 ]
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
+  // 这个样式在链接被激活的时候才会显示（router-link自带）
+  linkActiveClass: 'active',
   routes
 })
 
