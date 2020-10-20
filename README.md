@@ -38,7 +38,9 @@ npm run serve
 
 ### UI框架的配置
 
-使用自动按需引入组件
+[完整配置见官方文档](https://youzan.github.io/vant/#/zh-CN/quickstart#fang-shi-yi.-zi-dong-an-xu-yin-ru-zu-jian-tui-jian)
+
+这里使用自动按需引入组件
 
 ```javascript
 // 方式一
@@ -55,8 +57,8 @@ module.exports = {
 
 // 代码中直接引入Vant组件
 // 插件会自动将代码转化为方式二中的按需引入形式
-
-import { Button } from 'vant';
+// main.js
+import { Button,其他UI组件... } from 'vant';
 ```
 ```javascript
 // 方式二
