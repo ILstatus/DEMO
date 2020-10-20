@@ -36,3 +36,33 @@ npm install
 npm run serve
 ```
 
+### UI框架的配置
+
+使用自动按需引入组件
+
+```javascript
+// 方式一
+// babel.config.js 
+module.exports = {
+  plugins: [
+    ['import', {
+      libraryName: 'vant',
+      libraryDirectory: 'es',
+      style: true
+    }, 'vant']
+  ]
+};
+
+// 代码中直接引入Vant组件
+// 插件会自动将代码转化为方式二中的按需引入形式
+
+import { Button } from 'vant';
+```
+```javascript
+// 方式二
+
+import Button from 'vant/lib/button';
+import 'vant/lib/button/style';
+```
+
+
